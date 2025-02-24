@@ -1,4 +1,3 @@
-
 * {
     box-sizing: border-box;
   }
@@ -12,7 +11,7 @@ padding: 20px;
 /* ------------------CSS de la página principal------------------ */
 
 /*Fondo de la pagina:*/
-body {
+#fondo1{
   background-image: url('fondo2.jpg');
   background-size: cover;
   background-position: center;
@@ -28,7 +27,6 @@ background-color: #cffdff4d;
 
 .derecha {
 width: 75%;
-background-color: #eecbcb28;
 }
 
 
@@ -76,7 +74,6 @@ background-color: #eecbcb28;
 #prueba{
   background-color: #5c0c00bb;
   padding: 20px;
-  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
   margin-bottom: 50px;
 }
@@ -130,6 +127,14 @@ img {
 
 /* ------------------CSS del About me------------------ */
 
+#fondo2{
+  background-image: url('fondo_about.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-attachment: fixed;
+}
+
 .foto{
   display: flex;
   justify-content: center;
@@ -152,19 +157,60 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .dentro2 img{
+  width: 450px;
   justify-content: center;
-  padding: 4%;
 }
 
 .central {
-  margin: 50px;
-  padding: 50px;
-  border: solid;
-  border-color: rgb(129, 129, 190);
+  padding: 80px;
+  border: 100px solid;
+  border-color: #91b0bf;
 }
+
+#prueba2{
+  background-color: #d386ffa4;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  margin-bottom: 50px;
+}
+
+.central p{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  line-height: 1.2;
+  font-family: 'Amarante';
+  color: #ebebeb;
+  background-color: #3f004e;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 10);
+}
+
+.botonback button {
+  background-color: #3c0080;
+  font-family: 'Amarante';
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 10);
+}
+
+.botonback button:hover {
+  background-color: #8b00fd;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  transform: scale(1.05);
+}
+
+
+
 
 
 /* ------------------CSS de ambas páginas------------------ */
@@ -188,7 +234,7 @@ h3 {
   margin-bottom: 20px;
   background-color: #91b0bf  ;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(54, 54, 54, 0.9);
+  box-shadow: 0 0 10px rgba(54, 54, 54, 0.082);
   padding: 10px;
 }
 
@@ -229,6 +275,7 @@ h1, h2, h3, h4 {
 /*Botones para ir y volver en cada pagina:*/
 button {
   background-color: #800000;
+  font-family: 'Amarante';
   color: #fff;
   padding: 12px 20px;
   border: none;
@@ -240,9 +287,9 @@ button {
 }
 
 button:hover {
-  background-color: #e40000;  /* Granate más oscuro cuando pasa el ratón */
+  background-color: #e40000;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-  transform: scale(1.05);  /* Efecto de agrandamiento */
+  transform: scale(1.05);
 }
 
 /* estilos para imágenes https://www.w3schools.com/css/css3_images.asp */
