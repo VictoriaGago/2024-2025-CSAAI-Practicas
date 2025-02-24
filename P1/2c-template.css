@@ -202,7 +202,7 @@ p {
   margin-top: 5px;
   margin-bottom: 5px;
   line-height: 1.2;
-  font-family: 'UnifrakturCook', cursive;
+  font-family: 'UnifrakturCook';
   color: #ebebeb;
   background-color: #6b0707;
   padding: 20px;
@@ -212,13 +212,13 @@ p {
 
 li {
   margin: 15px;
-  font-family: 'UnifrakturCook', cursive;
+  font-family: 'UnifrakturCook';
   color: #ffe2e2;
 }
 
 h1, h2, h3, h4 {
   text-shadow: 0 0 12px rgba(0, 0, 0, 20);
-  font-family: 'UnifrakturCook', cursive;
+  font-family: 'UnifrakturCook';
   color: #ffe2e2;
 }
 
