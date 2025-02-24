@@ -1,6 +1,5 @@
-/* https://www.w3schools.com/howto/howto_css_two_columns.asp */
-/* https://developer.mozilla.org/es/docs/Web/CSS/box-sizing */
-/* Así definimos el comportamiento de caja para todos los elementos */
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook&display=swap');
+
 * {
     box-sizing: border-box;
   }
@@ -8,47 +7,242 @@
 /* Crear columnas de ancho diferente que se colocan una a continuación de la otra */
 .columna {
 float: left;
-padding: 10px;
-min-height: 500px;
+padding: 20px;
 }
 
+/* ------------------CSS de la página principal------------------ */
+
+/*Fondo de la pagina:*/
+body {
+  background-image: url('fondo2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-attachment: fixed;
+}
+
+/*Columnas principales: */
 .izquierda {
 width: 25%;
+background-color: #cffdff4d;
 }
 
 .derecha {
 width: 75%;
+background-color: #eecbcb28;
 }
 
-/* Clear floats despues de las columnas para eliminar la superposición */
-.filla:after {
-content: "";
-display: table;
-clear: both;
+
+/* ------------------CSS de la página principal - Columna DERECHA------------------ */
+
+
+/*Columnas dentro de la derecha principal: */
+.ii {
+  width: 50%;
 }
 
-#c1 {
-    background-color:#aaa;
+.id {
+  width: 50%;
 }
 
-#c2 {
-    background-color:#bbb;
+/*Boton easteregg, columna id: */
+.id button{
+  background-color: #ce0071;
+  border-radius: 100px;
+  width: 30%;
+}
+
+.id button:hover {
+  background-color: #ffffff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  transform: scale(1.05);
+}
+
+.easteregg{
+  margin-left: 180px;
+  width: 80%;
+}
+
+/*Fondos de las dos secciones de la columna derecha: */
+#pito {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+  background-color: #cffdff21;
+}
+
+#prueba{
+  background-color: #5c0c00bb;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  margin-bottom: 50px;
+}
+
+/*Fondo de los videos y bordes: */
+#cancion1, #cancion2 {
+  background: linear-gradient(to right, #8b0000, #5C0D00);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+iframe {
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 10);
+}
+
+
+/* ------------------CSS de la página principal - Columna IZQUIERDA------------------ */
+
+
+/*Columna dentro de la columna izquierda principal: */
+.description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.description img{
+  width: 30%;
+}
+
+/*Imagen perfil dentro de la columna izquierda principal: */
+img {
+  width: 50%;
+  height: auto;
+}
+
+.icon{
+  width: 200%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+#foto{
+  border: 5px solid #8B0000;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+
+
+/* ------------------CSS del About me------------------ */
+
+.foto{
+  display: flex;
+  justify-content: center;
+  margin: 40px;
+}
+
+.foto img {
+  height: auto;
+  width: 30%;
+  padding-top: 60px;
+  padding-bottom: 70px;
+}
+
+.dentro1 {
+  width: 50%;
+}
+
+.dentro2 {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dentro2 img{
+  justify-content: center;
+  padding: 4%;
+}
+
+.central {
+  margin: 50px;
+  padding: 50px;
+  border: solid;
+  border-color: rgb(129, 129, 190);
+}
+
+
+/* ------------------CSS de ambas páginas------------------ */
+
+a{
+  color: #00e1ff;
+}
+
+h1{
+  margin-top: 30px;
+  padding: 1%;
+}
+
+h3 {
+  margin-top: 5px;
+  margin-bottom: 20px;
+  background-color: #91b0bf  ;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(54, 54, 54, 0.9);
+  padding: 10px;
+}
+
+h4 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+h2 {
+  margin-top: 10px;
+  margin-left: 30px;
+}
+
+p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  line-height: 1.2;
+  font-family: 'UnifrakturCook', cursive;
+  color: #ebebeb;
+  background-color: #6b0707;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 10);
+}
+
+li {
+  margin: 15px;
+  font-family: 'UnifrakturCook', cursive;
+  color: #ffe2e2;
+}
+
+h1, h2, h3, h4 {
+  text-shadow: 0 0 12px rgba(0, 0, 0, 20);
+  font-family: 'UnifrakturCook', cursive;
+  color: #ffe2e2;
+}
+
+/*Botones para ir y volver en cada pagina:*/
+button {
+  background-color: #800000;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 10);
+}
+
+button:hover {
+  background-color: #e40000;  /* Granate más oscuro cuando pasa el ratón */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  transform: scale(1.05);  /* Efecto de agrandamiento */
 }
 
 /* estilos para imágenes https://www.w3schools.com/css/css3_images.asp */
 /* posicionamiento de imágenes https://www.w3schools.com/css/css_positioning.asp */
-
-img {
-    width: 100%;
-    height: auto;
-}
-
-.iresponsive {
-    padding: 0 6px;
-    float: left;
-    width: 50%;
-  }
-
 /* Responsive layout - cuando el ancho de pantalla es menor a 600px, muestra las columnas apiladas. */
 /* Así conseguimos que el contenido se vea bien en dispositvos móviles */
 
