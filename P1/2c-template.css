@@ -161,14 +161,11 @@ img {
 }
 
 .dentro2 img{
-  width: 450px;
-  justify-content: center;
+  width: 100%;
 }
 
 .central {
   padding: 80px;
-  border: 100px solid;
-  border-color: #91b0bf;
 }
 
 #prueba2{
