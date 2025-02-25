@@ -139,8 +139,7 @@ img {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat; 
-  background-attachment: fixed;  
-  
+  background-attachment: fixed;
 }
 
 .foto{
@@ -173,8 +172,7 @@ img {
 }
 
 .central {
-  padding: 80px;
-  border: 50px solid #9100b5;
+  margin: 50px;
 }
 
 #prueba2{
