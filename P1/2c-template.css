@@ -296,6 +296,12 @@ button:hover {
   transform: scale(1.05);
 }
 
+.iresponsive{
+  padding: 0 6px;
+  float: left;
+  width: 50%;
+}
+
 /* estilos para imágenes https://www.w3schools.com/css/css3_images.asp */
 /* posicionamiento de imágenes https://www.w3schools.com/css/css_positioning.asp */
 /* Responsive layout - cuando el ancho de pantalla es menor a 600px, muestra las columnas apiladas. */
@@ -304,11 +310,31 @@ button:hover {
 @media screen and (max-width: 600px) {
     .columna {
       width: 100%;
+      overflow-x: hidden;
     }
 
     .iresponsive {
         width: 100%;
     }
-}
+    .icon{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .frame{
+      width: 100%;
+    }
+
+    .iframe{
+      width: 100%;
+    }
+
+    .central{
+      width: 100%;
+    }
+    }
+
+
 
 /* Más sobre diseño web responsive https://www.w3schools.com/css/css_rwd_intro.asp */
