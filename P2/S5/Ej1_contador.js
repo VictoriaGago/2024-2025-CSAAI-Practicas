@@ -18,5 +18,5 @@ boton.onclick = () => {
 
   //-- Actualizar el display
   display.innerHTML = cont;
-
+  
 }
