@@ -1,0 +1,335 @@
+* {
+    box-sizing: border-box;
+  }
+  
+/* Crear columnas de ancho diferente que se colocan una a continuación de la otra */
+.columna {
+float: left;
+padding: 20px;
+}
+
+
+/* ------------------CSS de la página principal------------------ */
+
+/*Fondo de la pagina:*/
+
+
+#fondo1{
+  background-image: url('fondo2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-attachment: fixed;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/*Columnas principales: */
+.izquierda {
+width: 25%;
+background-color: #cffdff4d;
+}
+
+.derecha {
+width: 75%;
+}
+
+
+/* ------------------CSS de la página principal - Columna DERECHA------------------ */
+
+
+/*Columnas dentro de la derecha principal: */
+.ii {
+  width: 50%;
+}
+
+.id {
+  width: 50%;
+}
+
+/*Boton easteregg, columna id: */
+.id button{
+  background-color: #ce0071;
+  border-radius: 100px;
+  width: 30%;
+}
+
+.id button:hover {
+  background-color: #ffffff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  transform: scale(1.05);
+}
+
+.easteregg{
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  text-align: center;
+}
+
+/*Fondos de las dos secciones de la columna derecha: */
+#pito {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+  background-color: #cffdff21;
+}
+
+#prueba{
+  background-color: #5c0c00bb;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  margin-bottom: 50px;
+}
+
+/*Fondo de los videos y bordes: */
+#cancion1, #cancion2 {
+  background: linear-gradient(to right, #8b0000, #5C0D00);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+iframe {
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 10);
+}
+
+
+/* ------------------CSS de la página principal - Columna IZQUIERDA------------------ */
+
+
+/*Columna dentro de la columna izquierda principal: */
+.description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.description img{
+  width: 30%;
+}
+
+/*Imagen perfil dentro de la columna izquierda principal: */
+img {
+  width: 50%;
+  height: auto;
+}
+
+.icon{
+  width: 200%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+#foto{
+  border: 5px solid #8B0000;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+
+
+/* ------------------CSS del About me------------------ */
+
+#fondo2{
+  background-image: url('fondo_about.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-attachment: fixed;
+}
+
+.foto{
+  display: flex;
+  justify-content: center;
+  margin: 40px;
+}
+
+.foto img {
+  height: auto;
+  width: 30%;
+  padding-top: 60px;
+  padding-bottom: 70px;
+}
+
+.dentro1 {
+  width: 50%;
+}
+
+.dentro2 {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dentro2 img{
+  width: 100%;
+}
+
+#prueba2{
+  background-color: #d386ffa4;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  margin-bottom: 50px;
+}
+
+.central p{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  line-height: 1.2;
+  font-family: 'Amarante';
+  color: #ebebeb;
+  background-color: #3f004e;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 10);
+}
+
+.botonback button {
+  background-color: #3c0080;
+  font-family: 'Amarante';
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 10);
+}
+
+.botonback button:hover {
+  background-color: #8b00fd;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  transform: scale(1.05);
+}
+
+
+
+
+
+/* ------------------CSS de ambas páginas------------------ */
+.amarante-regular {
+  font-family: "Amarante", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+a{
+  color: #00e1ff;
+}
+
+h1{
+  margin-top: 30px;
+  padding: 1%;
+}
+
+h3 {
+  margin-top: 5px;
+  margin-bottom: 20px;
+  background-color: #91b0bf  ;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(54, 54, 54, 0.082);
+  padding: 10px;
+}
+
+h4 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+h2 {
+  margin-top: 10px;
+  margin-left: 30px;
+}
+
+p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  line-height: 1.2;
+  font-family: 'Amarante';
+  color: #ebebeb;
+  background-color: #6b0707;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 10);
+}
+
+li {
+  margin: 15px;
+  font-family: 'Amarante';
+  color: #ffe2e2;
+}
+
+h1, h2, h3, h4 {
+  text-shadow: 0 0 12px rgba(0, 0, 0, 20);
+  font-family: 'Amarante';
+  color: #ffe2e2;
+}
+
+/*Botones para ir y volver en cada pagina:*/
+button {
+  background-color: #800000;
+  font-family: 'Amarante';
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 10);
+}
+
+button:hover {
+  background-color: #e40000;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  transform: scale(1.05);
+}
+
+.iresponsive{
+  padding: 0 6px;
+  float: left;
+  width: 50%;
+}
+
+/* estilos para imágenes https://www.w3schools.com/css/css3_images.asp */
+/* posicionamiento de imágenes https://www.w3schools.com/css/css_positioning.asp */
+/* Responsive layout - cuando el ancho de pantalla es menor a 600px, muestra las columnas apiladas. */
+/* Así conseguimos que el contenido se vea bien en dispositvos móviles */
+
+@media screen and (max-width: 600px) {
+    .columna {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .iresponsive {
+        width: 100%;
+    }
+    .icon{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .frame{
+      width: 100%;
+    }
+
+    .iframe{
+      width: 100%;
+    }
+
+    .central{
+      width: 100%;
+    }
+    }
+
+
+/* Más sobre diseño web responsive https://www.w3schools.com/css/css_rwd_intro.asp */
