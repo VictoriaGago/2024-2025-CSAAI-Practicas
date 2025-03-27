@@ -1,0 +1,156 @@
+/* Estilo global */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Fondo oscuro */
+    color: white; /* Texto blanco */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center; /* Asegura que el texto de los elementos se centre */
+}
+
+p {
+    font-size: 1.5rem;
+    margin: 10px;
+}
+
+#display {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#mensaje {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    color: white;
+}
+
+#teclado {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* Estilo de los botones */
+button {
+    background-color: #333333; /* Fondo de botones oscuro */
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    margin: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    width: 80px;
+    text-align: center;
+}
+
+button:active {
+    transform: scale(0.98); /* Efecto de pulsación */
+}
+
+/* Estilo de los botones de los números */
+.digito {
+    background-color: #444444; /* Fondo oscuro de los números */
+}
+
+.digito:hover {
+    background-color: #555555; /* Hover oscuro */
+}
+
+/* Botones de Start, Stop y Reset */
+#start {
+    background-color: #28a745; /* Verde */
+}
+
+#start:hover {
+    background-color: #218838; /* Verde más oscuro */
+}
+
+#stop {
+    background-color: #dc3545; /* Rojo */
+}
+
+#stop:hover {
+    background-color: #c82333; /* Rojo más oscuro */
+}
+
+#reset {
+    background-color: #ffc107; /* Amarillo */
+}
+
+#reset:hover {
+    background-color: #e0a800; /* Amarillo más oscuro */
+}
+
+/* Botones correctos e incorrectos */
+.correcto {
+    background-color: green;
+    color: white;
+}
+
+.incorrecto {
+    background-color: red;
+    color: white;
+}
+
+/* Asegurar que el teclado esté centrado correctamente */
+#teclado {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-items: center;
+    margin: 20px 0;
+}
+
+/* Adaptación a pantallas pequeñas */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    #display {
+        font-size: 1.8rem;
+    }
+
+    button {
+        width: 60px;
+        font-size: 1rem;
+        padding: 12px 20px;
+    }
+
+    #teclado {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    #teclado {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+
+    button {
+        width: 50px;
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+
+    #display {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de la Bomba</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="crono.js" defer></script>
+    <script src="actions.js" defer></script>
+</head>
+<body>
+
+    <h1>¡Desactiva la Bomba!</h1>
+    
+    <p>Clave: <span id="teclado">****</span></p>
+    <p>Intentos restantes: <span id="intentos">10</span></p>
+    <p id="display">0:0:0</p>
+
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <button id="reset">Reset</button>
+
+    <p id="mensaje">Introduce el código:</p>
+
+    <div id="botones">
+        <button class="digito" value="0">0</button>
+        <button class="digito" value="1">1</button>
+        <button class="digito" value="2">2</button>
+        <button class="digito" value="3">3</button>
+        <button class="digito" value="4">4</button>
+        <button class="digito" value="5">5</button>
+        <button class="digito" value="6">6</button>
+        <button class="digito" value="7">7</button>
+        <button class="digito" value="8">8</button>
+        <button class="digito" value="9">9</button>
+    </div>
+
+</body>
+</html>
