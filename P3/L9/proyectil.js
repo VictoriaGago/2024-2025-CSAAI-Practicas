@@ -13,7 +13,9 @@ let xop = 5;
 let yop = 150;
 let xp = xop;
 let yp = yop;
-let velp = 2;
+let velp = 5;
+let v = -5;
+let a = 0.09;
 
 //-- Coordenadas iniciales del objetivo
 let xomin = 5;
@@ -86,6 +88,8 @@ function lanzar()
 
   //-- 1) Actualizar posición de los elementos
   xo = xo + velp;
+  yo = yo + v;
+  v = v + a;
 
   //-- 2) Borrar el canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
