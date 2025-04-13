@@ -15,5 +15,18 @@
 </head>
 <body>
     <canvas id="canvas" width="700" height="400"></canvas>
+    
+    <div class="controles-movil">
+        <button onclick="moverNave(-1)">←</button>
+        <button onclick="disparar()">DISPARO</button>
+        <button onclick="moverNave(1)">→</button>
+    </div>
+
+    <button id="reiniciar-btn" style="display: none; position: absolute; left: 50%; top: 60%; transform: translateX(-50%); padding: 10px 20px; background: #af4c4c; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        REINICIAR JUEGO
+    </button>
+    <button id="ganar-btn" style="display: none; position: absolute; left: 50%; top: 60%; transform: translateX(-50%); padding: 10px 20px; background: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        JUGAR DE NUEVO
+    </button>
 </body>
 </html>

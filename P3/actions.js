@@ -1,21 +1,49 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
+let puntuacion = 0;
+
+//-- BOTONES PARA MOVIL:
+let btnIzquierda = document.getElementById('btn-izquierda');
+let btnDerecha = document.getElementById('btn-derecha');
+let btnDisparo = document.getElementById('btn-disparo');
+
+//-- REINICIAR:
+let gameOver = false;
+const reiniciarBtn = document.getElementById('reiniciar-btn');
+const ganarBtn = document.getElementById('ganar-btn');
+
+reiniciarBtn.addEventListener('click', reiniciarJuego);
+ganarBtn.addEventListener('click', reiniciarJuego);
+
+let victoria = false;
+
 //-- JUGADOR:
 const ImagenJugador = new Image();
 ImagenJugador.src = 'nave.webp';
 
+
+//-- EXPLOSION:
+const ImagenExplosion = new Image();
+ImagenExplosion.src = 'explosion.webp'; // Cambia por tu ruta de imagen
+const explosiones = [];
+
+
+//-- DISPARO:
+var balas = [];
+
+
 //-- ALIENS:
 const LADRILLO = {
-    F: 3,
-    C: 8,
+    F: 2,
+    C: 4,
     w: 30,
     h: 20,
     padding: 25,
     visible: true
   }
 
-  const ladrillos = [];
+const ladrillos = [];
 
 for (let i = 0; i < LADRILLO.F; i++) {
 
@@ -38,11 +66,12 @@ for (let i = 0; i < LADRILLO.F; i++) {
 
 
 //-- Posiciones para empezar:
-    let x = 300;
-    let y = 340;
+    let x = 315;
+    let y = canvas.height - 60;
 
 //-- Variables para teclado:
     const velocidad = 10;
+    const velocidad_ball = 1;
 
 //-- Variables para ladrillos:
     const velocidadX = 3;
@@ -52,6 +81,28 @@ for (let i = 0; i < LADRILLO.F; i++) {
     let direccionLadrillosX = 1;
     let direccionLadrillosY = 1;
 
+//-- Variables para disparo:
+    let disparoActivo = false;
+
+
+// FUNCIONES PARA QUE FUNCIONE CON EL MOVIL
+
+function moverNave(direccion) {
+    x += velocidad * direccion;
+    x = Math.max(0, Math.min(canvas.width - 70, x));
+}
+
+function disparar() {
+    var nuevoDisparo = {
+        x: x + 70 / 2 - 2,
+        y: y,
+        r: 3,
+        dy: -5
+    };
+    balas.push(nuevoDisparo);
+}
+
+//-- FUNCIONES 'NORMALES'
 
 function dibujarJugador(){
 
@@ -66,18 +117,29 @@ function moverJugador(){
         switch(event.keyCode){
 
             case 37: // Izquierda
-                x-=velocidad;
+                x -= velocidad;
                 x = Math.max(0, Math.min(canvas.width - 70, x));
                 break;
 
             case 39: // Derecha
-                x+=velocidad;
+                x += velocidad;
                 x = Math.max(0, Math.min(canvas.width - 70, x));
                 break;
-        }
-    }
 
-    
+            case 32: 
+                var nuevoDisparo = {
+
+                    x: x + 70 / 2-2,
+                    y : y,
+                    r : 3,
+                    dy : -5, //-- velocidad
+                };
+
+                balas.push(nuevoDisparo);
+
+                break;
+        }
+    };
 }
 
 function dibujarLadrillos(){
@@ -128,17 +190,190 @@ function moverLadrillos(){
 
     if (primerLadrillo.yl <= 0) {
 
-        direccionLadrillosY = 1; // Ir a la derecha
+        direccionLadrillosY = 1; // Ir abajo
     }
 
     if (ultimoLadrillo.yl + LADRILLO.w >= canvas.width) {
 
-        direccionLadrillosY = -1; // Ir a la izquierda
+        direccionLadrillosY = -1; // Ir arriba
     }
 
 }
 
+function dibujarBalas() {
+
+    for (let i = 0; i < balas.length; i++) {
+
+        ctx.beginPath();
+        ctx.arc(balas[i].x, balas[i].y, balas[i].r, 0, Math.PI * 2);
+        ctx.fillStyle = 'red';
+        ctx.fill();
+        ctx.closePath();
+
+        balas[i].y += balas[i].dy;
+
+        let balaEliminada = false;
+
+        for (let k = 0; k < LADRILLO.F && !balaEliminada; k++) {
+
+            for (let j = 0; j < LADRILLO.C && !balaEliminada; j++) {
+    
+                const ladrillo = ladrillos[k][j];
+                if (ladrillo.visible && colision(balas[i], ladrillo)){
+                    
+                    explosiones.push({
+                        x: ladrillo.xl,
+                        y: ladrillo.yl,
+                        frame: 0,
+                        active: true
+                    });
+
+                    ladrillo.visible = false;
+                    balas.splice(i, 1);
+                    i--;
+                    balaEliminada = true;
+                    puntuacion += 10;
+                }
+            }
+        }
+
+        if(!balaEliminada && balas[i] && balas[i].y < 0){
+
+            balas.splice(i, 1);
+            i--;
+        }
+    }
+}
+
+function colision(bala, ladrillo){
+    
+    return (
+
+        bala.x + bala.r > ladrillo.xl &&
+        bala.x - bala.r < ladrillo.xl + ladrillo.w &&
+        bala.y + bala.r > ladrillo.yl &&
+        bala.y - bala.r < ladrillo.yl + ladrillo.h
+    );
+    
+}
+
+function mostrarGameOver() {
+
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.font = '40px Arial';
+    ctx.fillStyle = 'red';
+    ctx.textAlign = 'center';
+    ctx.fillText('¡HAS PERDIDO!', canvas.width / 2, canvas.height / 2 - 30);
+    
+    reiniciarBtn.style.display = 'block';
+}
+
+function mostrarWIN() {
+
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.font = '40px Arial';
+    ctx.fillStyle = 'green';
+    ctx.textAlign = 'center';
+    ctx.fillText('¡HAS GANADO!', canvas.width / 2, canvas.height / 2 - 30);
+    
+    ganarBtn.style.display = 'block';
+}
+
+function reiniciarJuego() {
+   
+    puntuacion = 0;
+    gameOver = false;
+    victoria = false;
+    balas = [];
+    x = 315;
+    y = canvas.height - 60;
+    
+    for (let i = 0; i < LADRILLO.F; i++) {
+
+        for (let j = 0; j < LADRILLO.C; j++) {
+
+            ladrillos[i][j].visible = true;
+            ladrillos[i][j].xl = (LADRILLO.w + LADRILLO.padding) * j;
+            ladrillos[i][j].yl = (LADRILLO.h + LADRILLO.padding) * i;
+        }
+    }
+
+    ganarBtn.style.display = 'none';
+    reiniciarBtn.style.display = 'none';
+    
+    requestAnimationFrame(update);
+}
+
+function dibujarPuntuacion() {
+
+    ctx.font = '20px Arial';
+    ctx.fillStyle = 'white';
+    ctx.textAlign = 'left';
+    ctx.fillText('Puntos: ' + puntuacion, 20, 30);
+}
+
+function dibujarExplosiones() {
+
+    for (let i = 0; i < explosiones.length; i++) {
+
+        if (explosiones[i].active) {
+
+                ctx.drawImage(
+                ImagenExplosion,
+                explosiones[i].x,
+                explosiones[i].y,
+                LADRILLO.w,
+                LADRILLO.h
+            );
+            
+            explosiones[i].frame++;
+            
+            if (explosiones[i].frame > 10) {
+
+                explosiones[i].active = false;
+                explosiones.splice(i, 1);
+                i--;
+            }
+        }
+    }
+}
+
 function update(){
+
+    if (gameOver) {
+        mostrarGameOver();
+        return;
+    }
+
+    let todosInvisibles = true;
+
+    for (let i = 0; i < LADRILLO.F; i++) {
+
+        for (let j = 0; j < LADRILLO.C; j++) {
+
+            if (ladrillos[i][j].visible) {
+
+                todosInvisibles = false;
+
+                if (ladrillos[i][j].yl + LADRILLO.h >= canvas.height - 70) {
+                    
+                    gameOver = true;
+                }
+            }
+        }
+    }
+
+    if (todosInvisibles && !victoria) {
+       
+        victoria = true;
+       
+        mostrarWIN();
+       
+        return;
+    }
+
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
@@ -149,6 +384,14 @@ function update(){
     moverLadrillos()
 
     dibujarLadrillos()
+
+    //-- moverBalas() esta en moverJugador() 
+
+    dibujarBalas()
+
+    dibujarPuntuacion()
+
+    dibujarExplosiones()
 
     requestAnimationFrame(update);
 
