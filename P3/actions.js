@@ -20,25 +20,31 @@ let victoria = false;
 
 //-- JUGADOR:
 const ImagenJugador = new Image();
-ImagenJugador.src = 'nave.webp';
+ImagenJugador.src = 'sans.png';
 
 
 //-- EXPLOSION:
 const ImagenExplosion = new Image();
-ImagenExplosion.src = 'explosion.webp'; // Cambia por tu ruta de imagen
+ImagenExplosion.src = 'explosion.png';
 const explosiones = [];
 
 
 //-- DISPARO:
 var balas = [];
+const ImagenHueso = new Image();
+ImagenHueso.src = 'hueso.png';
 
 
 //-- ALIENS:
+
+const ImagenEnemigo = new Image();
+ImagenEnemigo.src = 'enemigos.png';
+
 const LADRILLO = {
-    F: 2,
-    C: 4,
-    w: 30,
-    h: 20,
+    F: 3,
+    C: 8,
+    w: 40,
+    h: 40,
     padding: 25,
     visible: true
   }
@@ -75,7 +81,7 @@ for (let i = 0; i < LADRILLO.F; i++) {
 
 //-- Variables para ladrillos:
     const velocidadX = 3;
-    const velocidadY = 0.3;
+    const velocidadY = 0.1;
 
 //-- Variables para cambiar direccion de los ladrillos:
     let direccionLadrillosX = 1;
@@ -151,9 +157,9 @@ function dibujarLadrillos(){
         if (ladrillos[i][j].visible) {
 
             ctx.beginPath();
-            ctx.rect(ladrillos[i][j].xl, ladrillos[i][j].yl, LADRILLO.w, LADRILLO.h);
-            ctx.fillStyle = 'blue';
-            ctx.fill();
+            
+            ctx.drawImage(ImagenEnemigo, ladrillos[i][j].xl, ladrillos[i][j].yl, LADRILLO.w, LADRILLO.h);
+
             ctx.closePath();
         }
         }
@@ -205,9 +211,7 @@ function dibujarBalas() {
     for (let i = 0; i < balas.length; i++) {
 
         ctx.beginPath();
-        ctx.arc(balas[i].x, balas[i].y, balas[i].r, 0, Math.PI * 2);
-        ctx.fillStyle = 'red';
-        ctx.fill();
+        ctx.drawImage(ImagenHueso, balas[i].x, balas[i].y, 20, 40);
         ctx.closePath();
 
         balas[i].y += balas[i].dy;
@@ -261,11 +265,11 @@ function mostrarGameOver() {
 
     ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.font = '40px Arial';
-    ctx.fillStyle = 'red';
+    ctx.font = '30px "Press Start 2P"';
+    ctx.fillStyle = 'white';
     ctx.textAlign = 'center';
-    ctx.fillText('¡HAS PERDIDO!', canvas.width / 2, canvas.height / 2 - 30);
-    
+    ctx.fillText('Stay determinated...', canvas.width / 2, canvas.height / 2 - 30);
+
     reiniciarBtn.style.display = 'block';
 }
 
@@ -273,11 +277,11 @@ function mostrarWIN() {
 
     ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.font = '40px Arial';
-    ctx.fillStyle = 'green';
+    ctx.font = '30px "Press Start 2P"';
+    ctx.fillStyle = 'white';
     ctx.textAlign = 'center';
-    ctx.fillText('¡HAS GANADO!', canvas.width / 2, canvas.height / 2 - 30);
-    
+    ctx.fillText('This will never end...', canvas.width / 2, canvas.height / 2 - 30);
+
     ganarBtn.style.display = 'block';
 }
 
@@ -308,10 +312,10 @@ function reiniciarJuego() {
 
 function dibujarPuntuacion() {
 
-    ctx.font = '20px Arial';
+    ctx.font = '20px "Press Start 2P"';
     ctx.fillStyle = 'white';
     ctx.textAlign = 'left';
-    ctx.fillText('Puntos: ' + puntuacion, 20, 30);
+    ctx.fillText('score: ' + puntuacion, 20, 30);
 }
 
 function dibujarExplosiones() {

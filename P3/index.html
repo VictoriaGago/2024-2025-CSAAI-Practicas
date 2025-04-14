@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alien fumeta</title>
+    <title>UNDERTALE del chino</title>
+    <link rel="icon" href="flower.webp" type="image/png">
 
     <!-- Hoja de estilo -->
     <link rel="stylesheet" href="styles.css">
@@ -13,20 +14,20 @@
     <script src="actions.js" defer></script>
 
 </head>
-<body>
-    <canvas id="canvas" width="700" height="400"></canvas>
+<body id="fondo">
+    <canvas id="canvas" width="1000" height="500"></canvas>
     
     <div class="controles-movil">
         <button onclick="moverNave(-1)">←</button>
-        <button onclick="disparar()">DISPARO</button>
+        <button onclick="disparar()">SHOT</button>
         <button onclick="moverNave(1)">→</button>
     </div>
 
-    <button id="reiniciar-btn" style="display: none; position: absolute; left: 50%; top: 60%; transform: translateX(-50%); padding: 10px 20px; background: #af4c4c; color: white; border: none; border-radius: 5px; cursor: pointer;">
-        REINICIAR JUEGO
+    <button id="reiniciar-btn" style="display: none; position: absolute; left: 50%; transform: translateX(-50%); padding: 10px 20px; background: #af4c4c; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        RESTART
     </button>
-    <button id="ganar-btn" style="display: none; position: absolute; left: 50%; top: 60%; transform: translateX(-50%); padding: 10px 20px; background: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
-        JUGAR DE NUEVO
+    <button id="ganar-btn" style="display: none; position: absolute; left: 50%; transform: translateX(-50%); padding: 10px 20px; background: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        PLAY AGAIN
     </button>
 </body>
 </html>
