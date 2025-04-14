@@ -1,6 +1,13 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
+//-- MUSICA:
+const juego = document.getElementById('sonido1');
+const win = document.getElementById('sonido2');
+const lose = document.getElementById('sonido3');
+const disparo = document.getElementById('disparo');
+const bomba = document.getElementById('bomba');
+
 let puntuacion = 0;
 
 //-- BOTONES PARA MOVIL:
@@ -90,6 +97,10 @@ for (let i = 0; i < LADRILLO.F; i++) {
 //-- Variables para disparo:
     let disparoActivo = false;
 
+function iniciarMusica(){
+    juego.volume = 0.3;
+    juego.play();
+}
 
 // FUNCIONES PARA QUE FUNCIONE CON EL MOVIL
 
@@ -105,6 +116,9 @@ function disparar() {
         r: 3,
         dy: -5
     };
+    
+    disparo.currentTime = 0;
+    disparo.play();
     balas.push(nuevoDisparo);
 }
 
@@ -133,6 +147,7 @@ function moverJugador(){
                 break;
 
             case 32: 
+
                 var nuevoDisparo = {
 
                     x: x + 70 / 2-2,
@@ -140,6 +155,9 @@ function moverJugador(){
                     r : 3,
                     dy : -5, //-- velocidad
                 };
+
+                disparo.currentTime = 0;
+                disparo.play();
 
                 balas.push(nuevoDisparo);
 
@@ -237,6 +255,8 @@ function dibujarBalas() {
                     i--;
                     balaEliminada = true;
                     puntuacion += 10;
+                    bomba.currentTime = 0;
+                    bomba.play();
                 }
             }
         }
@@ -269,7 +289,13 @@ function mostrarGameOver() {
     ctx.fillStyle = 'white';
     ctx.textAlign = 'center';
     ctx.fillText('Stay determinated...', canvas.width / 2, canvas.height / 2 - 30);
-
+    
+    disparo.pause();
+    juego.pause();
+    lose.currentTime = 0;
+    lose.volume = 0.3;
+    lose.play();
+    
     reiniciarBtn.style.display = 'block';
 }
 
@@ -277,16 +303,28 @@ function mostrarWIN() {
 
     ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.font = '30px "Press Start 2P"';
+    ctx.font = '30px "Comic Sans MS"';
     ctx.fillStyle = 'white';
     ctx.textAlign = 'center';
-    ctx.fillText('This will never end...', canvas.width / 2, canvas.height / 2 - 30);
+    ctx.fillText('* pretty humerus, right? ;)', canvas.width / 2, canvas.height / 2 - 30);
+
+    disparo.pause();
+    juego.pause();
+    win.currentTime = 0;
+    win.volume = 0.3;
+    win.play();
 
     ganarBtn.style.display = 'block';
 }
 
 function reiniciarJuego() {
    
+    iniciarMusica();
+    win.currentTime = 0;
+    win.pause();
+    lose.currentTime = 0;
+    lose.pause();
+
     puntuacion = 0;
     gameOver = false;
     victoria = false;
@@ -346,11 +384,6 @@ function dibujarExplosiones() {
 
 function update(){
 
-    if (gameOver) {
-        mostrarGameOver();
-        return;
-    }
-
     let todosInvisibles = true;
 
     for (let i = 0; i < LADRILLO.F; i++) {
@@ -370,16 +403,22 @@ function update(){
     }
 
     if (todosInvisibles && !victoria) {
-       
+
         victoria = true;
-       
+
         mostrarWIN();
-       
+        return;
+    }
+    
+    if (gameOver) {
+        mostrarGameOver();
         return;
     }
 
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    iniciarMusica()
     
     moverJugador()
 

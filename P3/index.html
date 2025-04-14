@@ -15,7 +15,7 @@
 
 </head>
 <body id="fondo">
-    <canvas id="canvas" width="1000" height="500"></canvas>
+    <canvas id="canvas" width="900" height="400"></canvas>
     
     <div class="controles-movil">
         <button onclick="moverNave(-1)">←</button>
@@ -29,5 +29,26 @@
     <button id="ganar-btn" style="display: none; position: absolute; left: 50%; transform: translateX(-50%); padding: 10px 20px; background: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
         PLAY AGAIN
     </button>
+
+    <audio id="sonido1" loop>
+        <source src="megalovania.mp3" type="audio/mpeg">
+    </audio>
+      
+    <audio id="sonido2" loop>
+        <source src="ganaste.mp3" type="audio/mpeg">
+    </audio>
+      
+    <audio id="sonido3" loop>
+        <source src="perdiste.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="disparo">
+        <source src="disparo.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="bomba">
+        <source src="bomba.mp3" type="audio/mpeg">
+    </audio>
+
 </body>
 </html>
