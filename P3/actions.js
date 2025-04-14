@@ -1,68 +1,64 @@
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
+
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
 
 //-- MUSICA:
-const juego = document.getElementById('sonido1');
-const win = document.getElementById('sonido2');
-const lose = document.getElementById('sonido3');
-const disparo = document.getElementById('disparo');
-const bomba = document.getElementById('bomba');
+var juego = document.getElementById('sonido1');
+var win = document.getElementById('sonido2');
+var lose = document.getElementById('sonido3');
+var disparo = document.getElementById('disparo');
+var bomba = document.getElementById('bomba');
 
-let puntuacion = 0;
-
-//-- BOTONES PARA MOVIL:
-let btnIzquierda = document.getElementById('btn-izquierda');
-let btnDerecha = document.getElementById('btn-derecha');
-let btnDisparo = document.getElementById('btn-disparo');
+var puntuacion = 0;
 
 //-- REINICIAR:
-let gameOver = false;
-const reiniciarBtn = document.getElementById('reiniciar-btn');
-const ganarBtn = document.getElementById('ganar-btn');
+var gameOver = false;
+var reiniciarBtn = document.getElementById('reiniciar-btn');
+var ganarBtn = document.getElementById('ganar-btn');
 
 reiniciarBtn.addEventListener('click', reiniciarJuego);
 ganarBtn.addEventListener('click', reiniciarJuego);
 
-let victoria = false;
+var victoria = false;
 
 //-- JUGADOR:
-const ImagenJugador = new Image();
+var ImagenJugador = new Image();
 ImagenJugador.src = 'sans.png';
 
 
 //-- EXPLOSION:
-const ImagenExplosion = new Image();
+var ImagenExplosion = new Image();
 ImagenExplosion.src = 'explosion.png';
-const explosiones = [];
+var explosiones = [];
 
 
 //-- DISPARO:
 var balas = [];
-const ImagenHueso = new Image();
+var ImagenHueso = new Image();
 ImagenHueso.src = 'hueso.png';
 
 
 //-- ALIENS:
 
-const ImagenEnemigo = new Image();
+var ImagenEnemigo = new Image();
 ImagenEnemigo.src = 'enemigos.png';
 
-const LADRILLO = {
+var LADRILLO = {
     F: 3,
     C: 8,
     w: 40,
     h: 40,
     padding: 25,
     visible: true
-  }
+  };
 
-const ladrillos = [];
+var ladrillos = [];
 
-for (let i = 0; i < LADRILLO.F; i++) {
+for (var i = 0; i < LADRILLO.F; i++) {
 
   ladrillos[i] = [];
 
-  for (let j = 0; j < LADRILLO.C; j++) {
+  for (var j = 0; j < LADRILLO.C; j++) {
 
     ladrillos[i][j] = {
 
@@ -79,30 +75,26 @@ for (let i = 0; i < LADRILLO.F; i++) {
 
 
 //-- Posiciones para empezar:
-    let x = 315;
-    let y = canvas.height - 60;
+    var x = 315;
+    var y = canvas.height - 60;
 
 //-- Variables para teclado:
-    const velocidad = 10;
-    const velocidad_ball = 1;
+    var velocidad = 10;
 
 //-- Variables para ladrillos:
-    const velocidadX = 3;
-    const velocidadY = 0.1;
+    var velocidadX = 3;
+    var velocidadY = 0.1;
 
 //-- Variables para cambiar direccion de los ladrillos:
-    let direccionLadrillosX = 1;
-    let direccionLadrillosY = 1;
-
-//-- Variables para disparo:
-    let disparoActivo = false;
+    var direccionLadrillosX = 1;
+    var direccionLadrillosY = 1;
 
 function iniciarMusica(){
     juego.volume = 0.3;
     juego.play();
 }
 
-// FUNCIONES PARA QUE FUNCIONE CON EL MOVIL
+// FUNCIONES PARA QUE FUNCIONE CON EL MOVIL (se ejecutan desde el html)
 
 function moverNave(direccion) {
     x += velocidad * direccion;
@@ -168,9 +160,9 @@ function moverJugador(){
 
 function dibujarLadrillos(){
 
-    for (let i = 0; i < LADRILLO.F; i++) {
+    for (var i = 0; i < LADRILLO.F; i++) {
 
-        for (let j = 0; j < LADRILLO.C; j++) {
+        for (var j = 0; j < LADRILLO.C; j++) {
 
         if (ladrillos[i][j].visible) {
 
@@ -186,9 +178,9 @@ function dibujarLadrillos(){
 
 function moverLadrillos(){
 
-    for (let i = 0; i < LADRILLO.F; i++) {
+    for (var i = 0; i < LADRILLO.F; i++) {
 
-        for (let j = 0; j < LADRILLO.C; j++) {
+        for (var j = 0; j < LADRILLO.C; j++) {
 
             ladrillos[i][j].xl += velocidadX * direccionLadrillosX;
 
@@ -197,9 +189,9 @@ function moverLadrillos(){
         }
     }
     
-    const primerLadrillo = ladrillos[0][0];
+    var primerLadrillo = ladrillos[0][0];
 
-    const ultimoLadrillo = ladrillos[0][LADRILLO.C-1];
+    var ultimoLadrillo = ladrillos[0][LADRILLO.C-1];
     
     if (primerLadrillo.xl <= 0) {
 
@@ -226,7 +218,7 @@ function moverLadrillos(){
 
 function dibujarBalas() {
 
-    for (let i = 0; i < balas.length; i++) {
+    for (var i = 0; i < balas.length; i++) {
 
         ctx.beginPath();
         ctx.drawImage(ImagenHueso, balas[i].x, balas[i].y, 20, 40);
@@ -234,13 +226,13 @@ function dibujarBalas() {
 
         balas[i].y += balas[i].dy;
 
-        let balaEliminada = false;
+        var balaEliminada = false;
 
-        for (let k = 0; k < LADRILLO.F && !balaEliminada; k++) {
+        for (var k = 0; k < LADRILLO.F && !balaEliminada; k++) {
 
-            for (let j = 0; j < LADRILLO.C && !balaEliminada; j++) {
+            for (var j = 0; j < LADRILLO.C && !balaEliminada; j++) {
     
-                const ladrillo = ladrillos[k][j];
+                var ladrillo = ladrillos[k][j];
                 if (ladrillo.visible && colision(balas[i], ladrillo)){
                     
                     explosiones.push({
@@ -332,9 +324,9 @@ function reiniciarJuego() {
     x = 315;
     y = canvas.height - 60;
     
-    for (let i = 0; i < LADRILLO.F; i++) {
+    for (var i = 0; i < LADRILLO.F; i++) {
 
-        for (let j = 0; j < LADRILLO.C; j++) {
+        for (var j = 0; j < LADRILLO.C; j++) {
 
             ladrillos[i][j].visible = true;
             ladrillos[i][j].xl = (LADRILLO.w + LADRILLO.padding) * j;
@@ -358,7 +350,7 @@ function dibujarPuntuacion() {
 
 function dibujarExplosiones() {
 
-    for (let i = 0; i < explosiones.length; i++) {
+    for (var i = 0; i < explosiones.length; i++) {
 
         if (explosiones[i].active) {
 
@@ -384,11 +376,11 @@ function dibujarExplosiones() {
 
 function update(){
 
-    let todosInvisibles = true;
+    var todosInvisibles = true;
 
-    for (let i = 0; i < LADRILLO.F; i++) {
+    for (var i = 0; i < LADRILLO.F; i++) {
 
-        for (let j = 0; j < LADRILLO.C; j++) {
+        for (var j = 0; j < LADRILLO.C; j++) {
 
             if (ladrillos[i][j].visible) {
 
@@ -418,26 +410,26 @@ function update(){
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    iniciarMusica()
+    iniciarMusica();
     
-    moverJugador()
+    moverJugador();
 
-    dibujarJugador()
+    dibujarJugador();
 
-    moverLadrillos()
+    moverLadrillos();
 
-    dibujarLadrillos()
+    dibujarLadrillos();
 
     //-- moverBalas() esta en moverJugador() 
 
-    dibujarBalas()
+    dibujarBalas();
 
-    dibujarPuntuacion()
+    dibujarPuntuacion();
 
-    dibujarExplosiones()
+    dibujarExplosiones();
 
     requestAnimationFrame(update);
 
 }
 
-update()
+update();
