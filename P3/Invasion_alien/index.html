@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNDERTALE del chino</title>
+    <link rel="icon" href="flower.webp" type="image/png">
+
+    <!-- Hoja de estilo -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Código javascript -->
+    <script src="actions.js" defer></script>
+
+</head>
+<body id="fondo">
+    <canvas id="canvas" width="900" height="400"></canvas>
+    
+    <div class="controles-movil">
+        <button onclick="moverNave(-1)">←</button>
+        <button onclick="disparar()">SHOT</button>
+        <button onclick="moverNave(1)">→</button>
+    </div>
+
+    <button id="reiniciar-btn" style="display: none; position: absolute; left: 50%; transform: translateX(-50%); padding: 10px 20px; background: #af4c4c; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        RESTART
+    </button>
+    <button id="ganar-btn" style="display: none; position: absolute; left: 50%; transform: translateX(-50%); padding: 10px 20px; background: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        PLAY AGAIN
+    </button>
+
+    <audio id="sonido1" loop>
+        <source src="megalovania.mp3" type="audio/mpeg">
+    </audio>
+      
+    <audio id="sonido2" loop>
+        <source src="ganaste.mp3" type="audio/mpeg">
+    </audio>
+      
+    <audio id="sonido3" loop>
+        <source src="perdiste.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="disparo">
+        <source src="disparo.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="bomba">
+        <source src="bomba.mp3" type="audio/mpeg">
+    </audio>
+
+</body>
+</html>
