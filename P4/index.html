@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="icon.png" type="image/png">
+
+        <title> Mono o Mano </title>
+
+        <link rel="stylesheet" href="memory.css" />
+        <script src="memory_game.js" defer></script>
+    </head>
+    <body id="fondo">
+
+        <div class="menu-inicial">
+            <h1>Bienvenido a Mono o Mano!!</h1>
+            <h2>Comprobemos lo que eres!</h2>
+            <label for="tamano-tablero">Selecciona el tamaño del tablero:</label>
+            <select id="tamano-tablero">
+                <option value="2">2 x 2</option>
+                <option value="4" selected>4 x 4</option>
+                <option value="6">6 x 6</option>
+            </select>
+            <button id="btn-iniciar-juego">Comenzar</button>
+        </div>
+        
+        <div class="game" style="display:none;">
+            <div class="controles" id="controles">
+                <button id="btn-reiniciar">Reiniciar</button>
+                <div class="display">
+                    <div class="movimientos">0 movimientos</div>
+                    <div class="timer">tiempo: 0 sec</div>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div class="tablero" grid-dimension="4"></div>
+                <div class="win">¡Has Ganado!</div>
+            </div>
+        </div>
+    </body>
+</html>
