@@ -45,8 +45,8 @@ canvas {
   }
 
 .info-panel {
-    background: #58bcff;
-    padding-left: 80px;
+  background: #fdf8e6a5;
+  padding-left: 80px;
     padding-right: 80px;
     border-radius: 5px;
     margin: 10px;
@@ -59,7 +59,7 @@ canvas {
 }
 
 .mensaje{
-  background: #58bfff;
+  background: #fdf8e6a5;
   padding: 5px;
 }
 
