@@ -1,7 +1,7 @@
 
 canvas {
     border: 1px solid black;
-    background: #fdf8e6a5;
+    background: #fdf8e6db;
 
   }
 
@@ -45,7 +45,7 @@ canvas {
   }
 
 .info-panel {
-  background: #fdf8e6a5;
+  background: #fdf8e6dd;
   padding-left: 80px;
     padding-right: 80px;
     border-radius: 5px;
